@@ -16,122 +16,30 @@ Authorization: Bearer YOUR_API_KEY
 
 ### 1. Get All Items
 
-**Endpoint:** `GET /api/items`
+**Endpoint:** `GET /api/health/check`
 
-**Description:** Retrieves a list of all items.
+**Description:** Retrieves health of the application
 
 **Request:**
 
 ```
-GET /api/items
+GET /api/health/check
 ```
 
 **Response:**
 
 ```json
-[
-    {
-        "id": 1,
-        "name": "Item 1",
-        "description": "Description of Item 1"
+{
+    "success": true,
+    "request_timestamp": "2025-01-18T18:35:27.915Z",
+    "response_timestamp": "2025-01-18T18:35:27.924Z",
+    "processing_time": "9ms",
+    "data": {
+        "uptime": 36.235476833,
+        "message": "OK",
+        "timestamp": 1737225327924
     },
-    {
-        "id": 2,
-        "name": "Item 2",
-        "description": "Description of Item 2"
-    }
-]
-```
-
-### 2. Get Item by ID
-
-**Endpoint:** `GET /api/items/:id`
-
-**Description:** Retrieves a specific item by its ID.
-
-**Request:**
-
-```
-GET /api/items/1
-```
-
-**Response:**
-
-```json
-{
-    "id": 1,
-    "name": "Item 1",
-    "description": "Description of Item 1"
-}
-```
-
-### 3. Create Item
-
-**Endpoint:** `POST /api/items`
-
-**Description:** Creates a new item.
-
-**Request:**
-
-```json
-{
-    "name": "New Item",
-    "description": "Description of the new item"
-}
-```
-
-**Response:**
-
-```json
-{
-    "id": 3,
-    "name": "New Item",
-    "description": "Description of the new item"
-}
-```
-
-### 4. Update Item
-
-**Endpoint:** `PUT /api/items/:id`
-
-**Description:** Updates an existing item by its ID.
-
-**Request:**
-
-```json
-{
-    "name": "Updated Item",
-    "description": "Updated description of the item"
-}
-```
-
-**Response:**
-
-```json
-{
-    "id": 1,
-    "name": "Updated Item",
-    "description": "Updated description of the item"
-}
-```
-
-### 5. Delete Item
-
-**Endpoint:** `DELETE /api/items/:id`
-
-**Description:** Deletes an item by its ID.
-
-**Request:**
-
-```
-DELETE /api/items/1
-```
-
-**Response:**
-
-```json
-{
-    "message": "Item deleted successfully"
+    "message": "Health check passed successfully!!!!"
 }
 ```
 
@@ -140,60 +48,9 @@ DELETE /api/items/1
 The API uses standard HTTP status codes to indicate the success or failure of a request. Common status codes include:
 
 - `200 OK`: The request was successful.
-- `201 Created`: The resource was successfully created.
-- `400 Bad Request`: The request was invalid or cannot be served.
-- `401 Unauthorized`: Authentication is required and has failed or has not yet been provided.
 - `404 Not Found`: The requested resource could not be found.
 - `500 Internal Server Error`: An error occurred on the server.
 
-## Examples
-
-### cURL
-
-#### Get All Items
-
-```sh
-curl -X GET "https://api.example.com/api/items" -H "Authorization: Bearer YOUR_API_KEY"
-```
-
-#### Create Item
-
-```sh
-curl -X POST "https://api.example.com/api/items" -H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d '{"name": "New Item", "description": "Description of the new item"}'
-```
-
-### JavaScript (Fetch)
-
-#### Get All Items
-
-```javascript
-fetch('https://api.example.com/api/items', {
-    method: 'GET',
-    headers: {
-        'Authorization': 'Bearer YOUR_API_KEY'
-    }
-})
-    .then(response => response.json())
-    .then(data => console.log(data));
-```
-
-#### Create Item
-
-```javascript
-fetch('https://api.example.com/api/items', {
-    method: 'POST',
-    headers: {
-        'Authorization': 'Bearer YOUR_API_KEY',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        name: 'New Item',
-        description: 'Description of the new item'
-    })
-})
-    .then(response => response.json())
-    .then(data => console.log(data));
-```
 
 ## Conclusion
 

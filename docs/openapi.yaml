@@ -5,58 +5,6 @@ info:
 servers:
     - url: '/api'
 paths:
-    '/config/env':
-        get:
-            summary: The method allow us to load environment variables defined for UI
-            responses:
-                '200':
-                    description: Load environment variables for UI
-                    content:
-                        application/json:
-                            schema:
-                                '$ref': '#/components/schemas/success-response'
-                            example:
-                                '$ref': '#/components/examples/environment-data-response'
-                '400':
-                    description: Bad Request
-                    content:
-                        application/json:
-                            schema:
-                                '$ref': '#/components/schemas/error-response'
-                            example:
-                                '$ref': '#/components/examples/400-error-response'
-                '401':
-                    description: Unauthorized
-                    content:
-                        application/json:
-                            schema:
-                                '$ref': '#/components/schemas/error-response'
-                            example:
-                                '$ref': '#/components/examples/401-error-response'
-                '404':
-                    description: Not Found
-                    content:
-                        application/json:
-                            schema:
-                                '$ref': '#/components/schemas/error-response'
-                            example:
-                                '$ref': '#/components/examples/404-error-response'
-                '405':
-                    description: Method Not Allowed
-                    content:
-                        application/json:
-                            schema:
-                                '$ref': '#/components/schemas/error-response'
-                            example:
-                                '$ref': '#/components/examples/405-error-response'
-                '500':
-                    description: Internal server error
-                    content:
-                        application/json:
-                            schema:
-                                '$ref': '#/components/schemas/error-response'
-                            example:
-                                '$ref': '#/components/examples/500-error-response'
     '/health/check':
         get:
             summary: The method will check the health of the application
@@ -69,22 +17,6 @@ paths:
                                 '$ref': '#/components/schemas/success-response'
                             example:
                                 '$ref': '#/components/examples/health-check-response'
-                '400':
-                    description: Bad Request
-                    content:
-                        application/json:
-                            schema:
-                                '$ref': '#/components/schemas/error-response'
-                            example:
-                                '$ref': '#/components/examples/400-error-response'
-                '401':
-                    description: Unauthorized
-                    content:
-                        application/json:
-                            schema:
-                                '$ref': '#/components/schemas/error-response'
-                            example:
-                                '$ref': '#/components/examples/401-error-response'
                 '404':
                     description: Not Found
                     content:

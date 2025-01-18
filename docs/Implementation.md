@@ -25,7 +25,6 @@ Node-With-Typescript-Project-Template/
 │   ├── middleware/
 │   │   └── commonErrorHandler.ts
 │   │   └── opneApiValidator.ts
-│   │   └── parseBody.ts
 │   │   └── reqAndResLog.ts
 │   │   └── setHeaders.ts
 │   ├── types/
@@ -43,7 +42,11 @@ Node-With-Typescript-Project-Template/
 │   └── Consumer.md
 ├── .gitignore
 ├── package.json
+├── jest.config.js
 ├── tsconfig.json
+├── launch.json
+├── requests.http
+├── .env
 └── README.md
 ```
 
@@ -86,20 +89,31 @@ npm test
 
 - **src/**: Contains the source code of the application.
   - **controllers/**: Handles the request and response logic.
+  - **appConfig/**: Configuration of middler and root router for the application.
   - **models/**: Defines the data models.
+  - **models/**: Defines the middleware required for this API.
   - **routes/**: Defines the application routes.
   - **services/**: Contains the business logic.
   - **utils/**: Utility functions and helpers.
-  - **index.ts**: Entry point of the application.
+  - **types/**: Defines the type.
+  - **server.ts**: Entry point of the application.
   - **app.ts**: Initializes and configures the application.
 
 - **tests/**: Contains the test cases for the application.
 
+- **docs/**: Contains documentation like openapi.yaml, POSTMAN, Implementation and Consumer for the application.
+
 - **.gitignore**: Specifies files and directories to be ignored by Git.
+
+- **jest.config.js**: Specifies configuartion of jest for unit test.
 
 - **package.json**: Contains the project metadata and dependencies.
 
 - **tsconfig.json**: TypeScript configuration file.
+
+- **launch.json**: VSCode debugging configuration for express app with Typescript.
+
+- **request.http**: Allow call api endpoint with the of VSCode extension called `REST Client`.
 
 - **README.md**: Project documentation.
 
