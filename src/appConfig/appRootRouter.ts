@@ -1,5 +1,4 @@
 import { Router } from "express";
-import configRouter from '../routers/config.router'
 import healthcheckRouter from "../routers/healthcheck.router";
 
 class AppRootRouter {
@@ -11,8 +10,7 @@ class AppRootRouter {
   }
 
   private initializeRoutes(): void {
-    // Mount the 'config' routes
-    this.router.use('/config', configRouter);
+    // Mount the 'health check route' routes
     this.router.use('/health', healthcheckRouter)
   }
 }

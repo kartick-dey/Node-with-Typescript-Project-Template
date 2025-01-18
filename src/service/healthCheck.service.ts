@@ -1,3 +1,5 @@
+import { CustomError } from "../utils/customError";
+
 class HealthCheckService {
     constructor() {}
 
@@ -15,7 +17,7 @@ class HealthCheckService {
                 timestamp: Date.now(),
             };
         } catch (error) {
-            throw error;
+            throw new CustomError('Health check failed', 500);
         }
     }
 }

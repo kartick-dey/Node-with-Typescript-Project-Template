@@ -37,22 +37,6 @@ class CommonErrorHandler {
         });
     }
 
-    private static handle406(corrId: string, res: Response) {
-        return res.status(HttpStatusCode.NotAcceptable).json({
-            errorCode: 'NOT_ACCEPTABLE',
-            message: 'Error - Not Acceptable',
-            correlationId: corrId,
-        });
-    }
-
-    private static handle415(corrId: string, res: Response) {
-        return res.status(HttpStatusCode.UnsupportedMediaType).json({
-            errorCode: 'UNSUPPORTED_MEDIA_TYPE',
-            message: 'Error - Unsupported Media Type',
-            correlationId: corrId,
-        });
-    }
-
     private static handle500(corrId: string, res: Response) {
         return res.status(HttpStatusCode.InternalServerError).json({
             errorCode: 'ERROR',
@@ -83,17 +67,7 @@ class CommonErrorHandler {
             case 405:
                 CommonErrorHandler.handle405(corrId, res);
                 break;
-            case 406:
-                CommonErrorHandler.handle406(corrId, res);
-                break;
-            case 415:
-                CommonErrorHandler.handle415(corrId, res);
-                break;
             case 500:
-                CommonErrorHandler.handle500(corrId, res);
-                break;
-
-            default:
                 CommonErrorHandler.handle500(corrId, res);
                 break;
         }

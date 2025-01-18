@@ -3,7 +3,6 @@ dotenv.config();
 import cors from 'cors';
 import express, { Application } from 'express';
 import { ReqAndResLog } from '../middleware/reqAndResLog';
-import { ParseBody } from '../middleware/parseBody';
 import openAPIValidator from '../middleware/openApiValidator';
 import SetHeaders from '../middleware/setHeaders';
 import swaggerUi from 'swagger-ui-express';
@@ -35,9 +34,6 @@ class AppMiddlewares {
         // Setup request and response logger
         app.use(ReqAndResLog.logRequestInfo);
         app.use(ReqAndResLog.logResponseInfo);
-
-        // Add body parser
-        app.use(ParseBody.useBodyparser);
 
         app.use(SetHeaders.setResponseHeaders);
 
