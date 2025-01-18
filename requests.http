@@ -1,0 +1,2 @@
+GET http://localhost:3001/api/config/env
+GET http://localhost:3001/api/health/check

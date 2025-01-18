@@ -1,0 +1,195 @@
+openapi: 3.0.1
+info:
+    title: Node-With-Typescript
+    version: 1.0.0
+servers:
+    - url: '/api'
+paths:
+    '/config/env':
+        get:
+            summary: The method allow us to load environment variables defined for UI
+            responses:
+                '200':
+                    description: Load environment variables for UI
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/success-response'
+                            example:
+                                '$ref': '#/components/examples/environment-data-response'
+                '400':
+                    description: Bad Request
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/400-error-response'
+                '401':
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/401-error-response'
+                '404':
+                    description: Not Found
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/404-error-response'
+                '405':
+                    description: Method Not Allowed
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/405-error-response'
+                '500':
+                    description: Internal server error
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/500-error-response'
+    '/health/check':
+        get:
+            summary: The method will check the health of the application
+            responses:
+                '200':
+                    description: Health check of the application
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/success-response'
+                            example:
+                                '$ref': '#/components/examples/health-check-response'
+                '400':
+                    description: Bad Request
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/400-error-response'
+                '401':
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/401-error-response'
+                '404':
+                    description: Not Found
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/404-error-response'
+                '405':
+                    description: Method Not Allowed
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/405-error-response'
+                '500':
+                    description: Internal server error
+                    content:
+                        application/json:
+                            schema:
+                                '$ref': '#/components/schemas/error-response'
+                            example:
+                                '$ref': '#/components/examples/500-error-response'
+
+components:
+    schemas:
+        success-response:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                request_timestamp:
+                    type: string
+                response_timestamp:
+                    type: string
+                processing_time:
+                    type: string
+                data:
+                    type: object
+                message:
+                    type: string
+        error-response:
+            type: object
+            properties:
+                errorCode:
+                    type: string
+                message:
+                    type: string
+                correlationId:
+                    type: string
+    examples:
+        environment-data-response:
+            value:
+                success: true
+                request_timestamp: '2021-09-30T12:00:00Z'
+                response_timestamp: '2021-09-30T12:00:00Z'
+                processing_time: '0.1s'
+                data:
+                    key1: value1
+                    key2: value2
+                message: 'Environment variables loaded successfully!!!!'
+        health-check-response:
+            value:
+                success: true
+                request_timestamp: '2021-09-30T12:00:00Z'
+                response_timestamp: '2021-09-30T12:00:00Z'
+                processing_time: '0.1s'
+                data:
+                    uptime: 118.478132833,
+                    message: OK
+                    timestamp: 1737194740215
+                message: 'Health check passed successfully!!!!'
+        400-error-response:
+            value:
+                errorCode: 'BAD_REQUEST'
+                message: 'Error - Bad Request'
+                correlationId: '6934c585-3886-4b94-9f94-a4f1f85c9ca4'
+        401-error-response:
+            value:
+                errorCode: 'UNAUTHORIZED'
+                message: 'Error - Unauthorized'
+                correlationId: '6934c585-3886-4b94-9f94-a4f1f85c9ca4'
+        404-error-response:
+            value:
+                errorCode: 'NOT_FOUND'
+                message: 'Error - Not Found'
+                correlationId: '6934c585-3886-4b94-9f94-a4f1f85c9ca4'
+        405-error-response:
+            value:
+                errorCode: 'METHOD_NOT_ALLOWED'
+                message: 'Error - Method Not Allowed'
+                correlationId: '6934c585-3886-4b94-9f94-a4f1f85c9ca4'
+        406-error-response:
+            value:
+                errorCode: 'NOT_ACCEPTABLE'
+                message: 'Error - Not Acceptable'
+                correlationId: '6934c585-3886-4b94-9f94-a4f1f85c9ca4'
+        415-error-response:
+            value:
+                errorCode: 'UNSUPPORTED_MEDIA_TYPE'
+                message: 'Error - Unsupported Media Type'
+                correlationId: '6934c585-3886-4b94-9f94-a4f1f85c9ca4'
+        500-error-response:
+            value:
+                errorCode: 'ERROR'
+                message: 'Error - Internal Server Error'
+                correlationId: '6934c585-3886-4b94-9f94-a4f1f85c9ca4'

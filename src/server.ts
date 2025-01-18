@@ -1,0 +1,29 @@
+import app from './app';
+import dotenv from 'dotenv';
+import logger from './utils/logger';
+
+dotenv.config();
+
+class Server {
+    private port: string | number;
+    private environment: string;
+
+    constructor() {
+        this.port = process.env.PORT || 3000; // Default to port 3000 if not specified
+        this.environment = process.env.NODE_ENV || 'development'; // Default to 'development' if not specified
+    }
+
+    /**
+     * Starts the server and listens on the specified port.
+     */
+    public start(): void {
+        app.listen(this.port, () => {
+            logger.info(`Application environment: ${this.environment}`);
+            logger.info(`Server is up and running on PORT ${this.port}`);
+        });
+    }
+}
+
+// Create an instance of the Server class and start it
+const server = new Server();
+server.start();

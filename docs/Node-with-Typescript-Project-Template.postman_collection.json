@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "dadbc62a-e125-4b12-b627-982d87108ec5",
+		"name": "Node-with-Typescript-Project-Template",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12795175"
+	},
+	"item": [
+		{
+			"name": "Environment",
+			"item": [
+				{
+					"name": "Get Enviornment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basicUrl}}/config/env",
+							"host": [
+								"{{basicUrl}}"
+							],
+							"path": [
+								"config",
+								"env"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Environment Sample Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{basicUrl}}/config/env",
+									"host": [
+										"{{basicUrl}}"
+									],
+									"path": [
+										"config",
+										"env"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "241"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f1-SdVdHHBXIfDNusyZbivKa3RffzA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 18 Jan 2025 05:58:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"request_timestamp\": \"2025-01-18T05:58:03.053Z\",\n    \"response_timestamp\": \"2025-01-18T05:58:03.063Z\",\n    \"processing_time\": \"10ms\",\n    \"data\": {\n        \"apiBasicUrl\": \"http://localhost:3001\"\n    },\n    \"message\": \"Environment variables loaded successfully!!!!\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Heath Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basicUrl}}/health/check",
+							"host": [
+								"{{basicUrl}}"
+							],
+							"path": [
+								"health",
+								"check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Health Check Sample Respose",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{basicUrl}}/health/check",
+									"host": [
+										"{{basicUrl}}"
+									],
+									"path": [
+										"health",
+										"check"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "256"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"100-hI0VKVmo6WZmA3p78tzkgg99LIU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 18 Jan 2025 10:07:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"request_timestamp\": \"2025-01-18T10:07:43.613Z\",\n    \"response_timestamp\": \"2025-01-18T10:07:43.625Z\",\n    \"processing_time\": \"12ms\",\n    \"data\": {\n        \"uptime\": 3.856016708,\n        \"message\": \"OK\",\n        \"timestamp\": 1737194863625\n    },\n    \"message\": \"Health check passed successfully!!!!\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
