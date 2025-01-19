@@ -8,6 +8,6 @@
         "esModuleInterop": true,
         "skipLibCheck": true
     },
-    "include": ["src/**/*", "tests/*.test.js"],
+    "include": ["src/**/*", "__tests__/*.test.js"],
     "exclude": ["node_modules", "dist"]
 }
