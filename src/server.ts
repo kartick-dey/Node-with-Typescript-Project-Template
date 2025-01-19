@@ -11,7 +11,7 @@ class Server {
 
     constructor() {
         this.port = process.env.PORT || 3000; // Default to port 3000 if not specified
-        this.environment = process.env.NODE_ENV || 'development'; // Default to 'development' if not specified
+        this.environment = process.env.NODE_ENV || 'dev'; // Default to 'dev' if not specified
     }
 
     /**

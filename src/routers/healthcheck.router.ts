@@ -7,8 +7,7 @@ class HealthCheckRouter {
     private ctrl: HealthCheckController;
     constructor() {
         this.router = Router();
-        const healthCheckSvc = new HealthCheckService();
-        this.ctrl = new HealthCheckController(healthCheckSvc);
+        this.ctrl = new HealthCheckController(new HealthCheckService());
         this.initializeRoutes();
     }
 
