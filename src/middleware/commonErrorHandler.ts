@@ -45,6 +45,14 @@ class CommonErrorHandler {
         });
     }
 
+    private static handleAnyError(corrId: string, res: Response, status?: number, message?: string) {
+        res.status(status || 500).json({
+            errorCode: 'ERROR',
+            message: message || 'Error - Internal Server Error',
+            correlationId: corrId,
+        });
+    }
+
     public static handleError(err: ApiError, req: Request, res: Response, next: NextFunction) {
         const corrId = req.correlationId || 'Not available';
         const status = err.statusCode || err.status || HttpStatusCode.InternalServerError;
@@ -69,6 +77,9 @@ class CommonErrorHandler {
                 break;
             case 500:
                 CommonErrorHandler.handle500(corrId, res);
+                break;
+            default:
+                CommonErrorHandler.handleAnyError(corrId, res, status, err.message);
                 break;
         }
     }
