@@ -53,6 +53,18 @@ describe('REST Api project template', () => {
         });
     });
 
+    it('should handle any error', () => {
+        const error = new CustomError('Service Unavailable', HttpStatusCode.ServiceUnavailable);
+        CommonErrorHandler.handleError(error, req as Request, res as Response, next as NextFunction);
+
+        expect(statusMock).toHaveBeenCalledWith(HttpStatusCode.ServiceUnavailable);
+        expect(jsonMock).toHaveBeenCalledWith({
+            errorCode: 'ERROR',
+            message: 'Service Unavailable',
+            correlationId: 'test-correlation-id',
+        });
+    });
+
     it('should handle default error (500)', () => {
         const error = new Error('Internal Server Error');
         CommonErrorHandler.handleError(error as any, req as Request, res as Response, next as NextFunction);
