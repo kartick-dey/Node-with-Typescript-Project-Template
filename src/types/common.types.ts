@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
-export interface ApiSuccess {
+export interface ApiSuccessResponse {
     req: Request;
     res: Response;
     data: Record<string, any> | {};
@@ -8,14 +8,11 @@ export interface ApiSuccess {
     status?: number | 200;
 }
 
-export interface ApiError {
-    message: string;
-    status?: number;
-    statusCode?: number;
-    errorCode?: string;
-    details?: any;
-    stack?: any;
-    stackTrace?: any; // designed for custom error
+export interface ApiErrorResponse {
+    req: Request;
+    res: Response;
+    next: NextFunction;
+    error: Record<string, any> | {};
 }
 
 export interface RequestLog {
@@ -28,52 +25,52 @@ export interface RequestLog {
 }
 
 export interface ResponseLog {
-    label: 'RESPONSE_INFO',
-    correlationId: string,
-    processingTime: string,
-    message: string
+    label: 'RESPONSE_INFO';
+    correlationId: string;
+    processingTime: string;
+    message: string;
 }
 
 export interface ControllerLog {
-    position: 'START' | 'END',
-    correlationId: string,
-    label: string // Controller name
-    httpMethod: string,
-    url: string
+    position: 'START' | 'END';
+    correlationId: string;
+    label: string; // Controller name
+    httpMethod: string;
+    url: string;
 }
 export interface ServiceLog {
-    position: 'Service Execution Start' | 'Service Execution End',
-    correlationId: string,
-    label: string,
-    method: string,
-    url: string
+    position: 'Service Execution Start' | 'Service Execution End';
+    correlationId: string;
+    label: string;
+    method: string;
+    url: string;
 }
 export interface RegistryLog {
-    position: 'Registry Execution Start' | 'Registry Execution End',
-    correlationId: string,
-    label: string,
-    method: string,
-    url: string
+    position: 'Registry Execution Start' | 'Registry Execution End';
+    correlationId: string;
+    label: string;
+    method: string;
+    url: string;
 }
 export interface HelperLog {
-    position: 'Helper Execution Start' | 'Helper Execution End',
-    correlationId: string,
-    label: string,
-    method: string,
-    url: string
+    position: 'Helper Execution Start' | 'Helper Execution End';
+    correlationId: string;
+    label: string;
+    method: string;
+    url: string;
 }
 export interface UtilLog {
-    position: 'Util Execution Start' | 'Util Execution End',
-    correlationId: string,
-    label: string,
-    method: string,
-    url: string
+    position: 'Util Execution Start' | 'Util Execution End';
+    correlationId: string;
+    label: string;
+    method: string;
+    url: string;
 }
 
 export interface CommonLog {
-    position: 'Execution Start' | 'Execution End',
-    correlationId: string,
-    label: string,
-    method: string,
-    url: string
+    position: 'Execution Start' | 'Execution End';
+    correlationId: string;
+    label: string;
+    method: string;
+    url: string;
 }

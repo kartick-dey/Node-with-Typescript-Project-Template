@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import { CustomError } from '../utils/customError';
 import logger from '../utils/logger';
 import { HttpStatusCode } from 'axios';
-import { ApiError } from '../types';
 
 class CommonErrorHandler {
     private static handle400(corrId: string, res: Response) {
@@ -53,7 +52,7 @@ class CommonErrorHandler {
         });
     }
 
-    public static handleError(err: ApiError, req: Request, res: Response, next: NextFunction) {
+    public static handleError(err: any, req: Request, res: Response, next: NextFunction) {
         const corrId = req.correlationId || 'Not available';
         const status = err.statusCode || err.status || HttpStatusCode.InternalServerError;
         err = err instanceof CustomError ? err.toJSON() : err;

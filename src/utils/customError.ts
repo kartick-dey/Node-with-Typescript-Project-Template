@@ -1,6 +1,4 @@
-import { ApiError } from "../types";
-
-export class CustomError extends Error implements ApiError {
+export class CustomError extends Error {
     public status: number;
     public errorCode: string;
     public details?: any;

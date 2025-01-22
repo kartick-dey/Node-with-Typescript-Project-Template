@@ -6,12 +6,13 @@ class HealthCheckController {
     constructor(private svc: HealthCheckService) {}
 
     public checkHealth(req: Request, res: Response, next: NextFunction) {
-        try {
-            const health = this.svc.checkHealth();
-            return ResponseHandler.success({ req, res, data: health, message: 'Health check passed successfully!!!!' });
-        } catch (error) {
-            next(error);
-        }
+        Promise.resolve(this.svc.checkHealth())
+            .then((health) => {
+                return ResponseHandler.success({ req, res, data: health || {}, message: 'Health check passed successfully!!!!' });
+            })
+            .catch((error: any) => {
+                return ResponseHandler.error({ error, req, res, next });
+            });
     }
 }
 
