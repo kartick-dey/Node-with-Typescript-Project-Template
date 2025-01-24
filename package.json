@@ -4,11 +4,13 @@
     "description": "Basic skeleton of project using node with typescript",
     "main": "dist/server.js",
     "scripts": {
-        "build": "tsc && copyfiles .env docs/**/* dist",
+        "build": "tsc && copyfiles ./.env.* docs/**/* dist",
         "watch:build": "tsc --watch",
         "watch:server": "nodemon",
-        "dev": "npm run build && ts-node-dev --respawn --transpile-only src/server.ts",
-        "start": "node dist/server.js",
+        "server:local": "npm run build && dotenv -e .env.dev -- ts-node-dev --respawn --transpile-only src/server.ts",
+        "server:dev": "npm run build && dotenv -e .env.dev node dist/server.js",
+        "server:uat": "npm run build && dotenv -e .env.uat node dist/server.js",
+        "server:prod": "npm run build && dotenv -e .env.prod node dist/server.js",
         "test": "jest --coverage",
         "test:watch": "jest --watch"
     },
@@ -17,8 +19,10 @@
     "dependencies": {
         "axios": "^1.7.7",
         "body-parser": "^1.20.3",
+        "compression": "^1.7.5",
         "cors": "^2.8.5",
-        "dotenv": "^16.4.5",
+        "dotenv": "^16.4.7",
+        "dotenv-cli": "^8.0.0",
         "express": "^4.21.1",
         "express-openapi-validator": "^5.4.2",
         "path": "^0.12.7",
@@ -29,6 +33,7 @@
         "yamljs": "^0.3.0"
     },
     "devDependencies": {
+        "@types/compression": "^1.7.5",
         "@types/cors": "^2.8.17",
         "@types/dotenv": "^6.1.1",
         "@types/express": "^5.0.0",

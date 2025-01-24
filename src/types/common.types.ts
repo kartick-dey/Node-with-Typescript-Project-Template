@@ -74,3 +74,15 @@ export interface CommonLog {
     method: string;
     url: string;
 }
+
+export interface ENV {
+    NODE_ENV: ENVIRONMENT;
+    PORT: number;
+    CORS_ORIGIN: string;
+    HTTP_METHODS: string;
+    REQUEST_SIZE: number;
+    API_BASE_URL: string;
+    HTTP_HEADERS: string;
+}
+
+export type ENVIRONMENT = 'dev' | 'prod' | 'uat';

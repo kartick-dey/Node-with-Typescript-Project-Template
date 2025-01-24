@@ -1,3 +1,5 @@
+import EnvConfig from './utils/envConfig';
+EnvConfig.envInitializations();
 import express, { Application } from 'express';
 import AppRootRouter from './appConfig/appRootRouter';
 import AppMiddlewares from './appConfig/appMiddlewares';

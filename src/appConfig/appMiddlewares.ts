@@ -1,5 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
 import cors from 'cors';
 import express, { Application } from 'express';
 import { ReqAndResLog } from '../middleware/reqAndResLog';
@@ -8,24 +6,27 @@ import SetHeaders from '../middleware/setHeaders';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 import path from 'path';
+import compresssion from 'compression';
+import EnvConfig from '../utils/envConfig';
 
 class AppMiddlewares {
-    public static configure(app: Application): void {
+    public static configure(app: Application): void {        
+        const env = EnvConfig.getEnv();
         const { validateInputs } = openAPIValidator;
         app.use(express.urlencoded({ extended: true }));
         app.use(
             express.json({
-                limit: parseInt(process.env.REQUEST_SIZE as string) * 1024 * 1024,
+                limit: env.REQUEST_SIZE * 1024 * 1024,
             }),
         );
-
+        
         // setting up CORS
         app.use(
             cors({
-                origin: process.env.CORS_ORIGIN,
+                origin: env.CORS_ORIGIN,
                 optionsSuccessStatus: 200,
-                methods: process.env.HTTP_METHODS,
-                allowedHeaders: process.env.HTTP_HEADERS,
+                methods: env.HTTP_METHODS,
+                allowedHeaders: env.HTTP_HEADERS,
                 credentials: false,
             }),
         );
@@ -43,9 +44,12 @@ class AppMiddlewares {
         const openApiYamlFilePath = path.join(__dirname, '../../dist', 'docs', 'openapi.yaml');
         const swaggerDocument = YAML.load(openApiYamlFilePath);
         // Set up the Swagger UI
-        if (process.env.NODE_ENV !== 'production') {
+        if (env.NODE_ENV !== 'prod') {
             app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         }
+
+        // Enable compression the output
+        app.use(compresssion());
     }
 }
 

@@ -1,6 +1,8 @@
 import app from './app';
 import dotenv from 'dotenv';
 import logger from './utils/logger';
+import { ENV } from './types';
+import EnvConfig from './utils/envConfig';
 
 dotenv.config();
 
@@ -8,10 +10,11 @@ class Server {
     private port: string | number;
     private environment: string;
     private httpServer: any;
+    private env: ENV = EnvConfig.getEnv();
 
     constructor() {
-        this.port = process.env.PORT || 3000; // Default to port 3000 if not specified
-        this.environment = process.env.NODE_ENV || 'dev'; // Default to 'dev' if not specified
+        this.port = this.env.PORT || 3000; // Default to port 3000 if not specified
+        this.environment = this.env.NODE_ENV || 'dev'; // Default to 'dev' if not specified
     }
 
     /**

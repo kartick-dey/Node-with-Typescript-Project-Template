@@ -1,5 +1,6 @@
 import winston from 'winston';
 import 'winston-daily-rotate-file';
+import EnvConfig from './envConfig';
 
 // Define log format
 const logFormat = winston.format.printf((info) => {
@@ -8,7 +9,7 @@ const logFormat = winston.format.printf((info) => {
 
 // Create a logger instance
 const logger = winston.createLogger({
-    level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+    level: EnvConfig.getEnv().NODE_ENV !== 'dev' ? 'info' : 'debug',
     format: winston.format.combine(
         winston.format.metadata({ fillExcept: ['timestamp', 'level', 'message', 'label'] }),
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
